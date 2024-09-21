@@ -1,0 +1,65 @@
+What is git?
+Free source Version Control System
+
+What is version control system?
+- A system that keeps track of our files or projects
+- It allows you to revert selected files to a previous state, comapre the changes, checks who made the changes
+- It helps when multiple peoples are working on the same code
+
+2 types of VCS
+a. Centralized Version Control
+b. Distributed Version Control
+
+In distributed version control people have a project on thier pc's with a history, a complete copy, keep pushing into the local repo and then network needed when pushing
+Ex - git
+
+What is Git?
+Github is a web based hosting service for git repositories.
+Note - You can use Git without Github, but you cannot use the Github without Git.
+
+Git is nothing but a local repository to main different versions of your project
+Github is public web hosting service and is used for hosting git repossitories
+
+Local repository - Working copy private workplace
+
+Working Directory and Staging Area or Index - An intermediate area where commits can be formatted and reviewed before completing the commits
+
+Push - Send a change to another repository
+Pull - Grab a change from a repository
+
+Basic Workflow of Git - 
+
+Step 1 - You modify a file from the working Directory
+Step 2 - You add these files to the staging area
+Step 3 - You perform commit operation that moves the files from the staging area. After push operation, it stores the changes permanently to the Git repository
+
+Repository is a central storage location for managing and tracking changes in files and directories
+
+Concepts of Git - 
+1. Blob - Blob stands for Binary Large Object. Each version of a file is represented by blob. A blob holds the file data but does not contain any metadata about the file. It is a binary file and in Git database, it is named as SHA1 hash of that file. In Git, files are not addressed by names, everything is content addressed.
+
+2. Trees - Tree is an object, which represents a directory, it holds blobs as well as other sub diretories. A tree is a binary file that stores references to blobs and trees which are also named as SHA1 hash of that object. Basically trees are used for associations 
+(Hashing is the process of transforming any given key or a string of characters into another value)
+
+ In Git, every commit you make is assigned a unique SHA-1 hash (Secure Hash Algorithm 1) value. This hash value is like a fingerprint for each commit. It helps Git keep track of every change made in the repository. Remember, hash values in Git are crucial for maintaining the integrity of your projects.
+
+<Commits>
+- Commits holds the current status of the repo. A commit is also named by SHA1 hash.
+- Every commit object has a pointer to the parent commit object (think it has a linked list)
+
+Git commands - 
+1. Clone - Bring a repo hosted somewhere like github into a folder or your local machine
+2. Add - Track your files and changes it Git, basically adds them to the staging area
+3. Commit - Save your files in git
+4. Push - Upload your commits to a git repo
+5. Pull - Download changes from a remote repo to your local repo
+
+What do different colors represent in github commit history
+1. Green - Represents whats new have been added to the file
+2. Red - Represents what have been removed from the file
+
+Steps to initialise the git on your system
+1. Install the git software
+2. In terminal of your working directory write - git init
+3. Checks for git status
+4. 
