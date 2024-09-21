@@ -67,4 +67,5 @@ Steps to initialise the git on your system
 Now these files are in the local repo, these are not yet present in our github repo
 Now, check if the remote github repo is initialised or not - git remote -v
 So, now we will add the remote repo to our local repo - git remote add origin pasteTheLink.git
-
+6. Now add the remote repo - git remote add origin https://github.com/Rajansuan/Js_learning.git
+7. git push origin master
