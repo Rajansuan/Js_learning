@@ -71,6 +71,6 @@ So, now we will add the remote repo to our local repo - git remote add origin pa
 7. git push origin master
 8. Difference between initialising and cloning the repos, when you are cloning the repo, you are also cloning the working history, configurations of that repo
 9. git clone https://github.com/Rajansuan/Js_learning.git
-10. it is just a test
+10. git pull origin master - to pull from the repo (latest changes) 
 
 
