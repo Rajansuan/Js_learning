@@ -69,4 +69,6 @@ Now, check if the remote github repo is initialised or not - git remote -v
 So, now we will add the remote repo to our local repo - git remote add origin pasteTheLink.git
 6. Now add the remote repo - git remote add origin https://github.com/Rajansuan/Js_learning.git
 7. git push origin master
+8. Difference between initialising and cloning the repos, when you are cloning the repo, you are also cloning the working history, configurations of that repo
+9. git clone https://github.com/Rajansuan/Js_learning.git
 
