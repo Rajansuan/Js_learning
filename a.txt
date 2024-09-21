@@ -62,4 +62,9 @@ Steps to initialise the git on your system
 1. Install the git software
 2. In terminal of your working directory write - git init
 3. Checks for git status
-4. 
+4. then add the files to staging area - git add ,
+5. Commit the files to the local repo - git commit -m "local commit"
+Now these files are in the local repo, these are not yet present in our github repo
+Now, check if the remote github repo is initialised or not - git remote -v
+So, now we will add the remote repo to our local repo - git remote add origin pasteTheLink.git
+
