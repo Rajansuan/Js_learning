@@ -48,6 +48,9 @@
 const express = require('express');
 const app = express();
 
+//Get request - http://localhost:3000/health-checkup?kidneyid=1
+//Send in Headers - username and password
+
 app.get("/health-checkup", (req,res)=>{
     const userName = req.headers.username;
     const passWord = req.headers.password;
@@ -72,5 +75,5 @@ app.get("/health-checkup", (req,res)=>{
 
 app.listen(3000);
 
-//Get request - http://localhost:3000/health-checkup?kidneyid=1
-//Send in Headers - username and password
+
+
