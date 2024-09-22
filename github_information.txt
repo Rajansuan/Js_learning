@@ -119,3 +119,4 @@ Issues in github?
 Issues in GitHub are items that can be created in a repository to track, plan, and discuss work. They can be used for a variety of purposes, including: Tracking ideas, Collecting feedback, Reporting bugs, Planning tasks, Collaborating on ideas or tasks, Communicating with others 
 
 closes #2 (closed the issue when merged)
+
