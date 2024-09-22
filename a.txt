@@ -92,4 +92,6 @@ Note- In Git, the term "upstream" refers to the main branch from which a given b
 How to merge the branches?
 1. First commit the changes the feature branch
 2. Pull request also helps to merge our changes from one branch to another
-
+3. We can merge using the UI (create the pull request from feature_branch to master), review and merge
+4. Then git checkout master
+5. git pull origin master (to get the latest data from online repo)
