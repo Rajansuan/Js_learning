@@ -112,4 +112,10 @@ How to delete the unwanted branch when the work is over?
 git branch -d feature_branch
 but first have to go the another branch to do this process
 
+git checkout feature_branch
+git merge main  (merges the current branch with main - takes codes from main too with our current branch)
 
+Issues in github?
+Issues in GitHub are items that can be created in a repository to track, plan, and discuss work. They can be used for a variety of purposes, including: Tracking ideas, Collecting feedback, Reporting bugs, Planning tasks, Collaborating on ideas or tasks, Communicating with others 
+
+closes #2 (closed the issue when merged)
