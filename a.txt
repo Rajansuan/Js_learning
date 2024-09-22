@@ -87,3 +87,9 @@ Steps to create a new branch
 2. Create a new branch -> git checkout -b feature_branchname
 3. Now we can check the difference between the two branches -> git diff name_of_the_branch_to_compare_with
 
+Note- In Git, the term "upstream" refers to the main branch from which a given branch was branched off of and to which it may eventually push changes to. By default, Git uses "origin" as the remote name for the upstream repository, but you can configure this to any name.
+
+How to merge the branches?
+1. First commit the changes the feature branch
+2. Pull request also helps to merge our changes from one branch to another
+
