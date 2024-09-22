@@ -104,43 +104,55 @@
 // app.listen(port);
 //=================================
 
-const express = require('express');
-const app = express();
-const port = 3000;
+// const express = require('express');
+// const app = express();
+// const port = 3000;
 
-//Get request - http://localhost:3000/health-checkup?kidneyid=1
-//Send in Headers - username and password
+// //Get request - http://localhost:3000/health-checkup?kidneyid=1
+// //Send in Headers - username and password
 
 
-const middlewareCredential = (req,res,next)=>{
-  const userName = req.headers.username;
-  const passWord = req.headers.password;
-  if(userName === 'admin' && passWord === 'pass@123'){
-    next();
-  }
-  else{
-    res.status(400).json({
-      msg: "Username and password does not match"
-    })
-  }
-}
+// const middlewareCredential = (req,res,next)=>{
+//   const userName = req.headers.username;
+//   const passWord = req.headers.password;
+//   if(userName === 'admin' && passWord === 'pass@123'){
+//     next();
+//   }
+//   else{
+//     res.status(400).json({
+//       msg: "Username and password does not match"
+//     })
+//   }
+// }
 
-const middlewareKidneyCheck = (req,res,next)=>{
-  const kidneyNumber = req.query.kidneynumber;
-  if(kidneyNumber == 1 || kidneyNumber == 2){
-    next();
-  }
-  else{
-    res.status(400).json({
-      msg: "Incorrect kidney input"
-    })
-  }
-}
+// const middlewareKidneyCheck = (req,res,next)=>{
+//   const kidneyNumber = req.query.kidneynumber;
+//   if(kidneyNumber == 1 || kidneyNumber == 2){
+//     next();
+//   }
+//   else{
+//     res.status(400).json({
+//       msg: "Incorrect kidney input"
+//     })
+//   }
+// }
 
-app.get("/", middlewareCredential, middlewareKidneyCheck, (req, res)=>{
-  res.json({
-    msg : "Your kidney is fine"
-  })
-})
+// app.get("/", middlewareCredential, middlewareKidneyCheck, (req, res)=>{
+//   res.json({
+//     msg : "Your kidney is fine"
+//   })
+// })
 
-app.listen(port);
+// app.listen(port);
+
+//====Another use case of midddlewares are rate limitters - calculate the number of requests
+
+// let numberOfReqs = 0;
+// const calculateReq = (req,res,next) => {
+//   numberOfReqs++;
+//   console.log(numberOfReqs);
+//   next();
+// };
+
+//And just call it in the get route
+
