@@ -45,35 +45,102 @@
 // Ctrl + ` => Open terminal in vs code
 // Alt + Z => Word wrap in vs code
 
+// const express = require('express');
+// const app = express();
+
+// //Get request - http://localhost:3000/health-checkup?kidneyid=1
+// //Send in Headers - username and password
+
+// app.get("/health-checkup", (req,res)=>{
+//     const userName = req.headers.username;
+//     const passWord = req.headers.password;
+//     const kidneyId = req.query.kidneyid;
+
+//     //Dumb ways of doing input validation and authentication
+//     if(kidneyId==1 || kidneyId==2){
+//         if(userName=="admin" && passWord=="pass123"){
+//             res.json({
+//                 msg:"Your kidney is fine!"
+//             })
+//         }else{
+//             res.status(400).json({
+//                 msg:"Wrong username and password"
+//             })
+//         }
+//     }else{
+//         res.status(400).json({
+//             msg:"Wrong input"
+//         })
+//     }
+// })
+
+// app.listen(3000);
+
+
+// What if I tell you to introduce another route that does
+// Kidney replacement
+// Inputs need to be the same then code repition will be there
+// Ugly solution - Create a new route, repeat code
+// Slightly better solution - Create wrapper fns
+// Best solution - middleware
+
+//Adding the Middleware (just another func)
+//You can add multiple callback functions in get syntax
+//Also the get syntax have the next after req,res -> and calls it when the things are fine and it itself a function
+//next() - calling next function makes control reaches to the next function
+//for example - 
+
+//const express = require('express');
+// const app = express();
+// const port = 3000;
+
+// app.get("/",(req,res,next)=>{
+//   console.log("Hello World from fn1");
+//   next();
+// }, (req,res)=>{
+//   console.log("Hello World from fn2");
+// })
+
+// app.listen(port);
+//=================================
+
 const express = require('express');
 const app = express();
+const port = 3000;
 
 //Get request - http://localhost:3000/health-checkup?kidneyid=1
 //Send in Headers - username and password
 
-app.get("/health-checkup", (req,res)=>{
-    const userName = req.headers.username;
-    const passWord = req.headers.password;
-    const kidneyId = req.query.kidneyid;
 
-    if(kidneyId==1 || kidneyId==2){
-        if(userName=="admin" && passWord=="pass123"){
-            res.json({
-                msg:"Your kidney is fine!"
-            })
-        }else{
-            res.status(400).json({
-                msg:"Wrong username and password"
-            })
-        }
-    }else{
-        res.status(400).json({
-            msg:"Wrong input"
-        })
-    }
+const middlewareCredential = (req,res,next)=>{
+  const userName = req.headers.username;
+  const passWord = req.headers.password;
+  if(userName === 'admin' && passWord === 'pass@123'){
+    next();
+  }
+  else{
+    res.status(400).json({
+      msg: "Username and password does not match"
+    })
+  }
+}
+
+const middlewareKidneyCheck = (req,res,next)=>{
+  const kidneyNumber = req.query.kidneynumber;
+  if(kidneyNumber == 1 || kidneyNumber == 2){
+    next();
+  }
+  else{
+    res.status(400).json({
+      msg: "Incorrect kidney input"
+    })
+  }
+}
+
+app.get("/", middlewareCredential, middlewareKidneyCheck, (req, res)=>{
+  res.json({
+    msg : "Your kidney is fine"
+  })
 })
 
-app.listen(3000);
-
-
-
+app.listen(port);
