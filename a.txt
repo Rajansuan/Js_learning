@@ -74,3 +74,16 @@ So, now we will add the remote repo to our local repo - git remote add origin pa
 10. git pull origin master - to pull from the repo (latest changes) 
 
 Add SSH key in github for authorization in MAC
+
+When working on big project, working on main branch is risky and also different people works on different features so it is better that people work on different branches and pushes the code to main branch when the feature is completely ready.
+
+Practical use case of branching - 
+Imagine working on a main branch and then created a seperate branch for new feature then issue arises in main branch then we will create the new branch and fix the changes of main branch there and then merge it back with main branch after that we can merge the feature branch when the feature is completed
+
+Note - We can we have the merge conflict
+
+Steps to create a new branch
+1. Check for what branch we are at - git branch 
+2. Create a new branch -> git checkout -b feature_branchname
+3. Now we can check the difference between the two branches -> git diff name_of_the_branch_to_compare_with
+
