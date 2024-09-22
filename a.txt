@@ -83,4 +83,6 @@ Imagine working on a main branch and then created a seperate branch for new feat
 Note - We can we have the merge conflict
 
 Steps to create a new branch
-1. Check for what branch we are at - git checkout -b feature_branchname
+1. Check for what branch we are at - git branch 
+2. Create a new branch -> git checkout -b feature_branchname
+3. Now we can check the difference between the two branches -> git diff name_of_the_branch_to_compare_with
