@@ -95,3 +95,21 @@ How to merge the branches?
 3. We can merge using the UI (create the pull request from feature_branch to master), review and merge
 4. Then git checkout master
 5. git pull origin master (to get the latest data from online repo)
+
+What is Git Merge Conflict?
+A git merge conflict is an event that takes place when Git is unable to automatically resolve differences in code between two commits
+So, you need to manually resolve and have to choose from which file you want to go ahead
+
+Git commands to resolve conflicts
+1. git log --merge: give us the list of commits that are causing the conflict
+2. git diff: Identify the differences between the states repos or files
+3. git checkout: Used to undo the changes made to the file or for changing the branches
+4. git reset --mixed: used to undo changes to the working directory and staging area
+5. git merge --abort: Helps in exiting the merge process and returning back to the state before the merging began
+6. git reset: Used at the time of merge conflict to reset the conflicted files to their original state.
+
+How to delete the unwanted branch when the work is over?
+git branch -d feature_branch
+but first have to go the another branch to do this process
+
+
