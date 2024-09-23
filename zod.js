@@ -8,7 +8,7 @@ const port = 3007;
 
 app.use(express.json());
 
-const schema = z.array(z.number()); //enough to describe the structure of our input
+// const schema = z.array(z.number()); //enough to describe the structure of our input
 
 //question - What is we have a particular syntax of input like
 // {
@@ -17,27 +17,35 @@ const schema = z.array(z.number()); //enough to describe the structure of our in
 //     country
 // }
 
-// const schema2 = z.object({
-//     email: z.string(),
-//     password: z.string(),
-//     country: z.literal("IN").or(z.literal("US")),
-//     kidney: z.array(z.number())
-// })
+const schema = z.object({
+    email: z.string(),
+    password: z.string(),
+    country: z.literal("IN").or(z.literal("US")),
+    kidneys: z.array(z.number())
+})
 
 app.post("/health",(req,res)=>{
-  const kidneys = req.body.kidney;
-//   const kidneyLength = kidneys.length;
-//   res.send("You have "+kidneyLength+" kidneys")
- const response = schema.safeParse(kidneys);
- if(!response.success){
-    res.json({
-        msg:"Invalid Inputs"
-    })
- }else{
-    res.send("You have "+response.data.length+" kidneys")
- }
 
-})
+    // const datas = req.body;
+    // console.log(datas);
+    const emaily = req.body.email;
+    console.log(emaily);
+    // const kidneys = req.body;
+    // const kidneyLength = kidneys.length;
+    // res.send("You have "+kidneyLength+" kidneys")
+
+    const response = schema.safeParse(req.body);
+    console.log(response);
+    
+    if(!response.success){
+        res.json({
+            msg:"Invalid Inputs"
+        })
+    }else{
+        res.send("You have "+response.data.kidneys.length+" kidneys") //because we get data object in response from zod
+    }
+
+    })
 
 app.use(function(err,req,res,next){
   res.json({
@@ -50,10 +58,4 @@ app.listen(port,()=>{
 })
 
 
-// {
-//     "email": "rajan",
-//     "password": "suan",
-//     "country": "IN",
-//     "kidney":[1,2,3]
-// }
-//http://localhost:3007/health
+
