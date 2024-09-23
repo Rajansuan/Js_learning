@@ -1,6 +1,12 @@
 //How can you better input validation?
 //to avoid manual validation
 //ZOD is the popular nodejs library
+
+//Difference between parse and safeParse in Zod
+// In Zod, both parse and safeParse are methods used to validate data against a schema, but they differ in how they handle validation errors.
+//// This will not throw an error, but return a result object
+// const result = schema.safeParse(123); // Invalid input (expects a string)
+
 const express = require("express");
 const z = require("zod");
 const app = express();
