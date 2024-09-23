@@ -154,5 +154,76 @@
 //   next();
 // };
 
-//And just call it in the get route
+//And just call it in the get route function
+
+//app.use///////////////////
+
+// const express = require("express");
+// const app = express();
+// const port = 3000;
+
+// //If i know that a middleware has to be called in every route
+// //then i can use the app.use(middleware_name)
+// //for example
+
+// let numberOfReqs = 0;
+// const calculateReq = (req,res,next) => {
+//   numberOfReqs++;
+//   console.log(numberOfReqs);
+//   next();
+// };
+
+// app.use(calculateReq);
+// app.use(express.json()) //we have put () because express.json returna itself a function
+
+// app.get(
+//   "/", //we does not put calculateReq here because we want to call it in every route 
+//   (req, res) => {
+//     res.json({
+//       msg: "Your kidney is fine",
+//     });
+//   },
+// );
+
+// app.listen(port);
+
+//Find the average time your server is taking to handle requests
+
+//Why do we need input validation?
+//What is the user sends the wrong body
+//to protect against attcks as what if user send a large number of requests
+
+// const express = require("express");
+// const app = express();
+// const port = 3007;
+// app.use(express.json());
+// //input expected = [1,2,3,4]
+
+// app.post(
+//   "/health", //we does not put calculateReq here because we want to call it in every route 
+//   (req, res) => {
+//     const kidneys = req.body.kidneys;
+//     const kidneyLength = kidneys.length;
+
+//     res.send("You have "+ kidneyLength +" kidneys");
+//   },
+// );
+
+// //Another important middleware - "global catches - error handling middlewares" (put it in the end)
+// //Why need it? Because we do not want user to see our exception or backend logic/errors
+
+// app.use(function(err,req,res,next){
+//   //errorCount++; //(we do this here)
+//   res.json({
+//     msg: "Something went wrong with out server",
+//   })
+// })
+
+// //this is global catch - have 4 inputs in the functions rather than 3 inputs
+
+// app.listen(port,()=>{
+//   console.log("Server is running on "+port);
+// });
+
+
 
