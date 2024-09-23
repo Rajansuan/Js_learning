@@ -12,10 +12,12 @@ app.use(express.json());
 
 //question - What is we have a particular syntax of input like
 // {
-//     email
-//     password
-//     country
-// }
+//     "email": "rcs@gmail.com",
+//     "password": "rajan123",
+//     "country": "IN",
+//     "kidneys": [1, 2, 3, 4, 9]
+//   }
+  
 
 const schema = z.object({
     email: z.string(),
