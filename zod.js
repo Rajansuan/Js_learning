@@ -21,7 +21,7 @@ app.use(express.json());
 
 const schema = z.object({
     email: z.string().email(),
-    password: z.string().min(8),
+    password: z.coerce.string().min(8), //ceorcion meaning is to push someone to do something - here it converts number to string
     country: z.literal("IN").or(z.literal("US")),
     kidneys: z.array(z.number())
 })
@@ -37,7 +37,8 @@ app.post("/health",(req,res)=>{
     // res.send("You have "+kidneyLength+" kidneys")
 
     const response = schema.safeParse(req.body);
-    console.log(response);
+    console.log(response.data.password);
+    console.log(typeof(response.data.password));
     
     if(!response.success){
         res.json({
@@ -66,4 +67,4 @@ app.listen(port,()=>{
 // but this can be easily achievable through zod
  //just import zod and create scheme = zod.array(zod.number()) and then response = schema.safeParse(yourInput), then console.log response
 
-
+ 
