@@ -10,3 +10,6 @@
 // 3. When the user logs out, ask the user to forget the token (or revoke it from the backend)
 
 //Why we store the token in local storage not the email and password, because local storage is very public
+
+//app.use(express.json()) -> this middleware to get the body
+
