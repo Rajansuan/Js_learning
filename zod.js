@@ -3,9 +3,9 @@
 //ZOD is the popular nodejs library
 
 //Difference between parse and safeParse in Zod
-// In Zod, both parse and safeParse are methods used to validate data against a schema, but they differ in how they handle validation errors.
+// In Zod, both parse (Throws an error on failure) and safeParse (Does not throw an error) are methods used to validate data against a schema, but they differ in how they handle validation errors.
 //// This will not throw an error, but return a result object
-// const result = schema.safeParse(123); // Invalid input (expects a string)
+// const result = schema.safeParse(123); // Invalid input (expects a string) and Returns an object with success and data or error
 
 const express = require("express");
 const z = require("zod");
