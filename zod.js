@@ -20,8 +20,8 @@ app.use(express.json());
   
 
 const schema = z.object({
-    email: z.string(),
-    password: z.string(),
+    email: z.string().email(),
+    password: z.string().min(8),
     country: z.literal("IN").or(z.literal("US")),
     kidneys: z.array(z.number())
 })
@@ -59,5 +59,11 @@ app.listen(port,()=>{
   console.log("Server is running on "+port);
 })
 
+//validate through function
+// function validateInput(arr){
+//     if(typeof arr == 'object' && arr.length >=1)
+// }
+// but this can be easily achievable through zod
+ //just import zod and create scheme = zod.array(zod.number()) and then response = schema.safeParse(yourInput), then console.log response
 
 
