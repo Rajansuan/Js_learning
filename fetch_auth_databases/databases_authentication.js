@@ -156,3 +156,114 @@
 // Compares the recreated signature with the signature in the token.
 // If the signatures match, the token is valid and can be trusted. If they don’t match, it means the token has been altered (tampered with), and it should be rejected.
 
+//------------{Project}-------------
+// Lets start by creating our assignment for today
+// A website which has 2 endpoints - 
+// POST /signin
+// Body - {
+// username: string
+// password: string
+// }
+// Returns a json web token with username encrypted
+
+// GET /users
+// Headers -
+// Authorization header
+// Returns an array of all users if user is signed in (token is correct)
+// Returns 403 status code if not
+
+const express = require("express");
+const jwt = require("jsonwebtoken");
+const jwtPassword = "123456";
+
+const app = express();
+app.use(express.json())
+const ALL_USERS = [
+  {
+    username: "rajan@gmail.com",
+    password: "123321",
+    name: "Rajan Suan",
+  },
+  {
+    username: "harkirat@gmail.com",
+    password: "123",
+    name: "Harkirat singh",
+  },
+  {
+    username: "priya@gmail.com",
+    password: "123321",
+    name: "Priya kumari",
+  },
+];
+
+function userExists(username, password) {
+  // write logic to return true or false if this user exists
+  // in ALL_USERS array
+  let userExistence = false;
+  for(let i=0;i<ALL_USERS.length;i++){
+    if(username==ALL_USERS[i].username && password==ALL_USERS[i].password){
+        return userExistence=true;
+    }
+  }
+  return userExistence=false; //returning outside the for loop so that it can check for all the elements so better way is find
+
+  //cleaner way - array find function
+    // function userExists(username, password) {
+    //     let userExist = false;
+
+    //     ALL_USERS.find((e) => {
+    //         if (e.username === username && e.password === password) {
+    //             userExist = true;
+    //         }
+    //     })
+
+
+    //     return userExist;
+    // }
+}
+
+app.post("/signin", function (req, res) {
+  const username = req.body.username;
+  const password = req.body.password;
+
+  if (!userExists(username, password)) {
+    return res.status(403).json({
+      msg: "User doesnt exist in our in memory db",
+    });
+  }
+
+  var token = jwt.sign({ username: username }, jwtPassword); //creating jsonwebtoken with username encrypted with our self defined jwtpassword i.e 123456
+  return res.json({
+    token,
+  });
+});
+
+app.get("/users", function (req, res) {
+  const token = req.headers.authorization;
+  try {
+    const decoded = jwt.verify(token, jwtPassword);
+    const username = decoded.username;
+    // return a list of users other than this username
+    res.json({
+        // users: ALL_USERS //copy the token and create a authorization key value pair in headers and paste the token in the value
+        users: ALL_USERS.filter((e)=>{
+            if(e.username==username){
+                return false;
+            }
+            else{
+                return true;
+            }
+        })
+    })
+  } catch (err) {
+    return res.status(403).json({
+      msg: "Invalid token",
+    });
+  }
+});
+
+// app.use((err,req,res,next)=>{
+//     res.send("Internal server error");
+// })
+
+app.listen(3000)
