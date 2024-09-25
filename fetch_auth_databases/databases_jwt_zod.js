@@ -61,7 +61,7 @@ const jwtPassword = "1234567";
 const zod = require("zod");
 
 app.use(express.json());
-mongoose.connect("mongodb://localhost:27017/user_database"); //user_database is our database name here
+mongoose.connect("mongodb+srv://rcs9159:Mongo%40321!!@cluster0.hksn7.mongodb.net/user_database"); //user_database is our database name here
 
 const users = mongoose.model("User", {
   name: String,
