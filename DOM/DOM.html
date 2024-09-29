@@ -1,3 +1,34 @@
+<!-- Document Object Model - A standard for how to get, change, add, or delete HTML elements.
+JavaScript makes the HTML page active and dynamic via the DOM.
+    You want a button to change colours when it gets clicked or an image to appear
+    when the mouse hovers over text.
+    First, you need to reference those elements from your JavaScript
+
+What is DOM?
+  - A programming interface for web documents.
+  - DOM is not a programming language.
+  - Represents the page so that programs can change the document structure,
+  style, and content.
+  - The DOM is a tree-like representation of the web page that gets loaded into
+  the browser.
+  - The DOM represents the document as nodes and objects.
+  - Without it, the JavaScript language wouldn't have any model or notion of web
+  pages, HTML documents, SVG documents, and their component parts.
+  - Web API used to build websites
+
+  Accessing the DOM
+  When you create a script, whether inline in a <script> element or included in the web
+  page, you can immediately begin using the API for the document or window objects to
+  manipulate the document itself.
+  The DOM was designed to be independent of any particular programming
+  language, making the structural representation of the document available from a
+  single, consistent API 
+  
+  DOM Tree
+  The DOM is a tree-like representation of the web page that gets loaded into the browser
+  When a web browser parses an HTML document, it builds a DOM tree and then uses it to display the document.
+  -->
+
 <!-- Here we will see the practical example of DOM -->
 <!-- ALso using codemium extension - Ai assistant for vs code in the vs code -->
 <!DOCTYPE html>
@@ -14,18 +45,81 @@
       <input type="text" name="lname" placeholder="Enter last name" /><br />
       <input type="submit" value="Submit" />
     </form>
-    <p>The Document Object Model (DOM).</p>
+    <p class="demo">The Document Object Model (DOM).</p>
+    <p class="demo">Demo</p>
     <button onclick="calElements()">Click me</button>
 
     <p id="displayItems"></p>
 
     <script>
+      // const form = document.getElementById("LoginForm");
+      // const fname = form.elements.fname;
+      // const lname = form.elements.lname;
+      // const displayItems = document.getElementById("displayItems");
+
+      // function calElements() {
+      //   displayItems.textContent = `Total number of elements: ${form.elements.length} and first name: ${fname.value} and last name: ${lname.value}`;
+      // }
       function calElements() {
         var x = document.getElementById("LoginForm").elements.length;
         var y = document.getElementById("LoginForm").elements[0].value;
+        var z = document.getElementsByName("lname")[0].value;
         document.getElementById("displayItems").innerHTML =
-          "Total number of elements: " + x + " and value: " + y;
+          "Total number of elements: " +
+          x +
+          " and first name: " +
+          y +
+          " and last name: " +
+          z;
+
+        //  create a specified element using createElement() method
+        var para = document.createElement("p");
+        para.innerHTML = "Hello World";
+        document.body.appendChild(para);
+
+        // Finding HTML Elements
+        // If you want to manipulate HTML elements.
+        // But we need to find the elements first. Multiple ways to do this:
+        // ● Finding HTML elements by id
+        // ● Finding HTML elements by tag name
+        // ● Finding HTML elements by class name
+        // ● Finding HTML elements by CSS selectors
+        // ● Finding HTML elements by HTML object collections
+
+        // Finding HTML Elements by CSS Selectors : querySelectorAll)
+        // Access one or more elements from the DOM that matches one or more CSS selectors.
+
+        var paras = document.querySelectorAll("p");
+        console.log(paras[0].innerHTML);
+
+        //querySelectorAll gives us the node list but querySelector gives the first occurence
+
+        //Finding HTML Elements by HTML Object Collections
+        const a = document.forms["LoginForm"];
+        console.log(a);
+
+        //Finding HTML Elements by Class Name
+        var b = document.getElementsByClassName("demo");
+        var len = b.length;
+        for (let i = 0; i < len; i++) {
+          document.getElementsByClassName("demo")[i].innerHTML = `Hello World from collection ${i}`;
+        }
       }
+
+      //Difference Between an HTMLCollection and a NodeList
+      //HTML collection
+          //getElementsByClassName() and getElementsByTagName() methods return a live HTMLCollection.
+          // A collection of document elements
+          //Items can be accessed by their name, id, or index number.
+          //It is always a live collection. Example: If you add a <li> element to a list in the DOM, the list in the HTMLCollection will also change
+
+      //NodeList
+          //querySelectorAll() method returns a static NodeList.
+          //A collection of document nodes (element nodes, attribute nodes, and text nodes).
+          //Items can only be accessed by their index number.
+          // /Most often a static collection. Example: If you add a <li> element to a list in the DOM, the list in NodeList will not change
+          
+
     </script>
   </body>
 </html>
