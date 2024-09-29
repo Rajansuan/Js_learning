@@ -119,6 +119,46 @@ What is DOM?
           //Items can only be accessed by their index number.
           // /Most often a static collection. Example: If you add a <li> element to a list in the DOM, the list in NodeList will not change
           
+      //document.getElementById("demo").setAttribute("class","demoClass")
+      //document.getElementById("myInput").setAttribute("type","button")
+
+      // DOM Nodes
+      //   ■ The entire document is a document node
+      //   ■ Every HTML element is an element node
+      //   ■ The text inside HTML elements are text node
+      //   ■ Every HTML attribute is an attribute node (deprecated)
+      //   ■ All comments are comment nodes
+
+      // DOM Events
+      // HTML DOM allows JavaScript to react to HTML events.
+
+      // A JavaScript can be executed when an event occurs, like when a user clicks on an HTML element.
+      // To execute code when a user clicks on an element, add JavaScript code to an HTML event attribute:
+      // onclick=JavaScript
+
+      // Onload and Onunload functions
+      // The onload and onunload events are triggered when the user enters or leaves the page.
+      // The onload event can be used to check the visitor's browser type and browser version, and load the proper version of the web page based on the information.
+      // The onload and onunload events can be used to deal with cookies.
+
+      // DOM EventListener
+      //   ● Attaches an event handler to the specified element (without overwriting existing event handlers).
+      //   ● You can add many event handlers(even of the same type) to one element.
+      //   ● You can add event listeners to any DOM object not only HTML elements. i.e the window object.
+      //   ● The addEventListener() method makes it easier to control how the event reacts to bubbling.
+      //   ● When using the addEventListener() method, the JavaScript is separated from the HTML markup, for better readability and allows you to add event listeners even when you do not control the HTML markup.
+      //   ● You can easily remove an event listener by using the removeEventListener() method.
+
+      // Event Bubbling or Event Capturing?
+      //     Two ways of event propagation in the HTML DOM - bubbling and capturing.
+      //     Event propagation is a way of defining the element order when an event occurs. If
+      //     you have a <p> element inside a <div> element, and the user clicks on the <p>
+      //     element, which element's "click" event should be handled first?
+      //     In bubbling the inner most element's event is handled first and then the outer: the <p>
+      //     element's click event is handled first, then the <div> element's click event.
+      //     In capturing the outer most element's event is handled first and then the inner: the <div>
+      //     element's click event will be handled first, then the <p> element's click event.
+
 
     </script>
   </body>
