@@ -1,0 +1,48 @@
+<!-- DOM is something which browsers provide us, not a part of js tech stack like setTimeout, http and fs
+
+Lets create a simple website to calculate the sum of two numbers
+This is a static website, clicking the button does nothing
+
+But making them dynamic is hard
+What do I mean, when I say dynamic -
+1. Changing the elements on the website once the website is loaded
+2. Actually calculating the sum based on the inputs and rendering it on the screen
+
+
+Why are Ids useful?
+Classes let you get rid of code repetition
+But what do ids do?
+
+Answer- 
+They let you access elements via the DOM API
+Can you use ids to do CSS? - Yes
+But what do you use it for usually - Javascript
+
+//We have to use the js if we want to make our weebsites dynamic
+//Also to make it dynamic we have to use the DOM
+//DOM is a global variable using which you can manipulatre the DOM
+
+ -->
+
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <title>Document</title>
+ </head>
+ <body>
+    <input type="text" id="num1">
+    <input type="text" id="num2">
+    <button onclick="add()">Add</button>
+    <p id="result"></p>
+    <script>
+       function add(){
+          let num1 = document.getElementById("num1").value;
+        //here let element = document.getElementById('result') is the reference to the html - type is DOM object
+          let num2 = document.getElementById("num2").value;
+          let result = document.getElementById("result");
+          let cal = Number(num1) + Number(num2); //or parseInt(num1) + parseInt(num2) //parseInt is the global function that covnerts the string to number -> "11" to 11
+          result.innerHTML = cal;
+       }
+    </script>
+ </body>
+ </html>
