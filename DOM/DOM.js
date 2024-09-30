@@ -26,7 +26,7 @@ app.get("/interest",(req,res)=>{
     let p = req.query.p;
     let r = req.query.r;
     let t = req.query.t;
-    let calInterest = (p*r*t)/100;
+    let calInterest = (p*r*t)/100; 
     let totalBalance = Number(p) + Number(calInterest);
     res.set({
         "Content-Type": "application/json",

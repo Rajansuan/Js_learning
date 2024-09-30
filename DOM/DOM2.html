@@ -30,7 +30,7 @@ And you need to hit the backend server and get back the value
 If you're trying to send a request to localhost, and you are hosting your server on localhost, then you don't need to specify the url, you only need to tell fetch() your path.
 
 For example, my api end point is http://localhost:8082/api/config, then i would do fetch('/api/config').
- -->
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -69,6 +69,54 @@ For example, my api end point is http://localhost:8082/api/config, then i would 
         );
         const data2 = await res.json();
         resInterest.innerHTML = data2.data;
+      }
+    </script>
+  </body>
+</html> 
+<!-- -->
+<!-- DEBOUNCING AND THROTLLING
+ 
+If I remove the button and directly add oninput then it will call the function and hits the api every time the input is typed.
+We do not want that as we need the input of minimum 2 characters.
+
+Debouncing - delayed sending out of requests - example search bar of amazon
+Throttling - limiting the number of requests per second
+-->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Document</title>
+  </head>
+  <body>
+    <input oninput="debounceAdd()" type="text" id="num1" />
+    <input oninput="debounceAdd()" type="text" id="num2" />
+    <!-- <button onclick="add()">Calculate Sum</button> -->
+    <p id="result">Sum result will be here</p>
+
+    <script>
+
+    let timeOut;  
+    function debounceAdd(){
+        //delay the call to add() until this not been called for 100ms and this has to be called once
+        //how you cancel a clock - clearTimeout
+        clearTimeout(timeOut);
+        timeOut = setTimeout(() => {
+          add();
+        }, 1000);
+        
+      }
+      async function add() {
+        let num1 = document.getElementById("num1").value;
+        let num2 = document.getElementById("num2").value;
+        let result = document.getElementById("result");
+        const res = await fetch(
+          `http://localhost:3005/sum?a=${num1}&b=${num2}`
+        );
+        const data = await res.json();
+        result.innerHTML = data.data;
       }
     </script>
   </body>
