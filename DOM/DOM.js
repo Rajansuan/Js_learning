@@ -22,6 +22,18 @@ app.get("/sum",(req,res)=>{
     
 })
 
+app.get("/interest",(req,res)=>{
+    let p = req.query.p;
+    let r = req.query.r;
+    let t = req.query.t;
+    let calInterest = (p*r*t)/100;
+    let totalBalance = Number(p) + Number(calInterest);
+    res.set({
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+    }).json({data: `Interest of p=${p} and r=${r} and t=${t} is ${calInterest} and total balance is ${totalBalance}`});
+})
+
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 })

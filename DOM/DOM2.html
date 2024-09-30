@@ -40,8 +40,14 @@ For example, my api end point is http://localhost:8082/api/config, then i would 
   <body>
     <input type="text" id="num1" />
     <input type="text" id="num2" />
-    <button onclick="add()">Add</button>
-    <p id="result">Hi</p>
+    <button onclick="add()">Calculate Sum</button>
+    <p id="result">Sum result will be here</p>
+
+    <input type="text" id="num3">
+    <input type="text" id="num4">
+    <input type="text" id="num5">
+    <button onclick="interest()">Calculate Interest</button>
+    <p id="resInterest">Interest result will be here</p>
     <script>
       async function add() {
         let num1 = document.getElementById("num1").value;
@@ -52,6 +58,17 @@ For example, my api end point is http://localhost:8082/api/config, then i would 
         );
         const data = await res.json();
         result.innerHTML = data.data;
+      }
+      async function interest() {
+        let num3 = document.getElementById("num3").value;
+        let num4 = document.getElementById("num4").value;
+        let num5 = document.getElementById("num5").value;
+        let resInterest = document.getElementById("resInterest");
+        const res = await fetch(
+          `http://localhost:3005/interest?p=${num3}&r=${num4}&t=${num5}`
+        );
+        const data2 = await res.json();
+        resInterest.innerHTML = data2.data;
       }
     </script>
   </body>
