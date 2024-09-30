@@ -22,27 +22,38 @@ But what do you use it for usually - Javascript
 //Also to make it dynamic we have to use the DOM
 //DOM is a global variable using which you can manipulatre the DOM
 
+
+Now, lets say you don’t have access to the calculation logic on the frontend
+Lets assume its a hard problem that someone has exposed on a backend server
+And you need to hit the backend server and get back the value
+
+If you're trying to send a request to localhost, and you are hosting your server on localhost, then you don't need to specify the url, you only need to tell fetch() your path.
+
+For example, my api end point is http://localhost:8082/api/config, then i would do fetch('/api/config').
  -->
 
- <!DOCTYPE html>
- <html lang="en">
- <head>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
     <title>Document</title>
- </head>
- <body>
-    <input type="text" id="num1">
-    <input type="text" id="num2">
+  </head>
+  <body>
+    <input type="text" id="num1" />
+    <input type="text" id="num2" />
     <button onclick="add()">Add</button>
-    <p id="result"></p>
+    <p id="result">Hi</p>
     <script>
-       function add(){
-          let num1 = document.getElementById("num1").value;
-        //here let element = document.getElementById('result') is the reference to the html - type is DOM object
-          let num2 = document.getElementById("num2").value;
-          let result = document.getElementById("result");
-          let cal = Number(num1) + Number(num2); //or parseInt(num1) + parseInt(num2) //parseInt is the global function that covnerts the string to number -> "11" to 11
-          result.innerHTML = cal;
-       }
+      async function add() {
+        let num1 = document.getElementById("num1").value;
+        let num2 = document.getElementById("num2").value;
+        let result = document.getElementById("result");
+        const res = await fetch(
+          `http://localhost:3005/sum?a=${num1}&b=${num2}`
+        );
+        const data = await res.json();
+        console.log(data);
+        result.innerHTML = data.data;
+      }
     </script>
- </body>
- </html>
+  </body>
+</html>
