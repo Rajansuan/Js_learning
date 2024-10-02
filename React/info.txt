@@ -1,0 +1,2 @@
+The reason why react came into the picture was doing DOM manipulation was hard and react make it easier
+
