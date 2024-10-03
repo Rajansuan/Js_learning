@@ -1,0 +1,51 @@
+<!-- The reason why react came into the picture was doing DOM manipulation was hard and react make it easier
+ -->
+
+ <!DOCTYPE html>
+ <br lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <title>To Do App</title>
+ </head>
+ <br>
+    <input type="text" id="title" placeholder="title"/>
+    <br></br>
+    <input type="text" id="description" placeholder="description"/>
+    <br></br>
+    <button onclick="addTodo()">Add todos</button>
+    <div id="container">
+
+    </div>
+    <script>
+        function addTodo(){
+            const title = document.getElementById("title").value;
+            const description = document.getElementById("description").value;
+            // const todo = {
+            //     "title": title,
+            //     "description": description
+            // }
+            // console.log('todo', todo.title, todo.description);
+
+            //today we are appending items one by one, so we can use document.createElement and document.appendChild to append more and more elements
+
+            //dumb way to do it
+            // document.getElementById("container").innerHTML = `<div>${title}</div><div>${description}</div><button>Marked as done</button>`
+            
+            //we want to append the data not to overwrite it
+            
+            //one way is -
+            //  const originalHTML = document.getElementById("container").innerHTML 
+
+            //  console.log(originalHTML);
+
+            //  document.getElementById("container").innerHTML = originalHTML + `<div>${title}</div><div>${description}</div><button>Marked as done</button>`           
+
+            //another way is - create a structure in the memory and eventually append them in DOM
+
+            const outerDiv = document.createElement("div");
+            
+
+        }
+    </script>
+ </body>
+ </html>
